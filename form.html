@@ -257,46 +257,6 @@
         yx.innerHTML = this.value; // 将当前区间域的value作为span元素的内容
       };
     </script>
-    <!-- 实现图片预览 -->
-    <script>
-      var fileInput = document.getElementById("test-image-file");
-      var info = document.getElementById("test-file-info");
-      var preview = document.getElementById("test-image-preview");
-      fileInput.addEventListener("change", function () {
-        // 监听change事件
-        preview.style.backgroundImage = ""; // 清除背景图片
-        if (!fileInput.value) {
-          info.innerHTML = "没有选择文件";
-          return;
-        }
-        var file = fileInput.files[0]; // 获取File引用
-        // 获取File信息:
-        info.innerHTML =
-          "文件: " +
-          file.name +
-          "<br>" +
-          "大小: " +
-          file.size +
-          "<br>" +
-          "修改: " +
-          file.lastModifiedDate;
-        if (
-          file.type !== "image/jpeg" &&
-          file.type !== "image/png" &&
-          file.type !== "image/gif"
-        ) {
-          alert("不是有效的图片文件!");
-          return;
-        }
-        var reader = new FileReader(); // 读取文件
-        reader.onload = function (e) {
-          // 发起一个异步操作来读取文件内容
-          var data = e.target.result; // data串形如： 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'
-          preview.style.backgroundImage = "url(" + data + ")";
-        };
-        reader.readAsDataURL(file); // 以DataURL的形式读取文件
-      });
-    </script>
     <!-- 实现验证码刷新 -->
     <script>
       function refreshCaptcha() {
